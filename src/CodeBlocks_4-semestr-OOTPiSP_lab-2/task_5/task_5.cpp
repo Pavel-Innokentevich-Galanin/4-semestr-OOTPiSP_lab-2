@@ -34,7 +34,6 @@ void Node::add_node(string word)
             return;
         }
     }
-
     struct Node* new_node = new struct Node;
     new_node->word = word;
     new_node->counter = 1;
@@ -50,7 +49,6 @@ void Node::show()
         << "\t" << "\"word\": " << "\"" << this->word << "\"," << endl
         << "\t" << "\"counter\": " << "\"" << this->counter << "\"," << endl
     << "}" << endl;
-
 }
 
 void Node::print()
@@ -96,7 +94,7 @@ void Node::print_table()
     //print sorted table
     for (int i = 0; i < length; i++)
     {
-        cout << arr[i].counter << "\t"<< arr[i].word << endl;
+        cout << arr[i].counter << "\t"<< "\"" << arr[i].word << "\"" << endl;
     }
     //delete array
     delete [] arr;
@@ -123,7 +121,7 @@ void task_5()
 {
     struct Node myList; //list for word with counter
     ifstream fin; //for read file
-    fin.open("loremru1000.txt"); //open file
+    fin.open("text.txt"); //open file
     if(!fin.is_open()) //if file not open then do
     {
         cout << "err open" << endl;
@@ -134,10 +132,13 @@ void task_5()
         char ch;
         while(fin.get(ch))
         {
-            if (ch == ' ')
+            if (ch == ' ' || ch == '\n' || ch == '\t')
             {
                 //cout << word << endl;
-                myList.add_node(word);
+                if (word != "")
+                {
+                    myList.add_node(word);
+                }
                 word = "";
             }
             else
