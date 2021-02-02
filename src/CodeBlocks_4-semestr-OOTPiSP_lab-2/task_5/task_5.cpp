@@ -123,7 +123,7 @@ void task_5()
 {
     struct Node myList; //list for word with counter
     ifstream fin; //for read file
-    fin.open("lorem1000.html"); //open file
+    fin.open("loremru1000.txt"); //open file
     if(!fin.is_open()) //if file not open then do
     {
         cout << "err open" << endl;
